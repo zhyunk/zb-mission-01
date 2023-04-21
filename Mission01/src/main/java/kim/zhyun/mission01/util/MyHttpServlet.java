@@ -22,9 +22,9 @@ public class MyHttpServlet {
     }
     public static void redirect(HttpServletRequest req, HttpServletResponse resp, String page) {
         try {
-            String domain = req.getRequestURL().toString().replace(req.getRequestURI(),"") + req.getContextPath() + page;
+            String url = req.getRequestURL().toString().replace(req.getRequestURI(),"") + req.getContextPath() + page;
 
-            resp.sendRedirect(domain);
+            resp.sendRedirect(url);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
