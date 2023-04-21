@@ -25,12 +25,12 @@ public class BookmarkGroupServlet extends HttpServlet {
         String uri = "";
         String cmd = "";
 
-        if (uris[maxIdxUris].equals("add")) {
+        if ("add".equals(uris[maxIdxUris])) {
             title = " 추가";
             uri = "detail.jsp";
             cmd = "add";
 
-        } else if (uris[maxIdxUris].equals("update")) {
+        } else if ("update".equals(uris[maxIdxUris])) {
             int idx = Integer.parseInt(req.getParameter("idx"));
 
             title = " 수정";
