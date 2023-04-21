@@ -1,4 +1,4 @@
-package kim.zhyun.mission01.model;
+package kim.zhyun.mission01.model.dao;
 
 import kim.zhyun.mission01.model.dto.WifiInfo;
 import kim.zhyun.mission01.util.DB;

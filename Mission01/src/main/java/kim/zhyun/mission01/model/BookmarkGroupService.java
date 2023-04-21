@@ -1,5 +1,6 @@
 package kim.zhyun.mission01.model;
 
+import kim.zhyun.mission01.model.dao.BookmarkGroupDao;
 import kim.zhyun.mission01.model.dto.BookmarkGroup;
 
 import java.util.List;

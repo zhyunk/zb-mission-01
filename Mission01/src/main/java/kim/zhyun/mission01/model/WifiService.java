@@ -1,5 +1,6 @@
 package kim.zhyun.mission01.model;
 
+import kim.zhyun.mission01.model.dao.WifiDao;
 import kim.zhyun.mission01.model.dto.WifiInfo;
 
 import java.util.List;

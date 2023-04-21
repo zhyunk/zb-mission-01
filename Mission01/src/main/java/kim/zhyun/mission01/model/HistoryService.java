@@ -1,5 +1,6 @@
 package kim.zhyun.mission01.model;
 
+import kim.zhyun.mission01.model.dao.HistoryDao;
 import kim.zhyun.mission01.model.dto.History;
 
 import java.util.List;
