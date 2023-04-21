@@ -3,8 +3,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String cmd = (String) request.getAttribute("cmd"); %>
 <% BookmarkGroup bmg = (BookmarkGroup) request.getAttribute("bmg"); %>
-        <form action="<%= ROOT %>bookmarkgroup/<%= cmd %>" method="post" id="bmgForm">
+        <form action="<%= ROOT %>bookmarkgroup" method="post" id="bmgForm">
             <input type="hidden" name="idx" value="<%= cmd.equals("update") ? bmg.getIdx() : "" %>">
+            <input type="hidden" name="cmd" value="<%= cmd %>">
             <table>
                 <colgroup>
                     <col style="width: 10%">

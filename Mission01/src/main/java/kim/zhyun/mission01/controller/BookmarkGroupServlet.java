@@ -40,15 +40,6 @@ public class BookmarkGroupServlet extends HttpServlet {
             BookmarkGroup bmg = service.select(idx);
             req.setAttribute("bmg", bmg);
 
-        } else if (uris[maxIdxUris].equals("delete")) {
-            int idx = Integer.parseInt(req.getParameter("idx"));
-            service.delete(idx);
-            req.setAttribute("list", service.selectAll());
-
-            title = "";
-            uri = "";
-            cmd = "";
-
         } else {
             req.setAttribute("list", service.selectAll());
         }
@@ -63,35 +54,32 @@ public class BookmarkGroupServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         MyHttpServlet.encoding(req, resp);
 
-        String[] uris = req.getRequestURI().split("/");
-        int uriMaxIdx = uris.length - 1;
-
-
-        BookmarkGroup b = new BookmarkGroup();
-        b.setName(req.getParameter("name"));
-        b.setMyOrder(Integer.parseInt(req.getParameter("order")));
-
+        String cmd = req.getParameter("cmd");
         List<BookmarkGroup> list = null;
 
-        if (uris[uriMaxIdx].equals("add")) {
-            b.setRegDatetime(MyDateTime.getNow());
+        if ("delete".equals(cmd)) {
+            int idx = Integer.parseInt(req.getParameter("idx"));
+            service.delete(idx);
 
-            service.insert(b);
-            list = service.selectAll();
+        } else {
+            BookmarkGroup b = new BookmarkGroup();
+            b.setName(req.getParameter("name"));
+            b.setMyOrder(Integer.parseInt(req.getParameter("order")));
 
-            req.setAttribute("list", list);
+            if ("add".equals(cmd)) {
+                b.setRegDatetime(MyDateTime.getNow());
+                service.insert(b);
 
-        } else if (uris[uriMaxIdx].equals("update")) {
-            b.setIdx(Integer.parseInt(req.getParameter("idx")));
-            b.setUpdDatetime(MyDateTime.getNow());
-
-            service.update(b);
-
-            req.setAttribute("list", service.selectAll());
+            } else if ("update".equals(cmd)) {
+                b.setIdx(Integer.parseInt(req.getParameter("idx")));
+                b.setUpdDatetime(MyDateTime.getNow());
+                service.update(b);
+            }
         }
 
+        req.setAttribute("list", service.selectAll());
         req.setAttribute("pageTitle", "북마크 그룹");
 
-        MyHttpServlet.forward(this, req, resp, "/_bookmarkgroup/");
+        MyHttpServlet.redirect(req, resp, "/bookmarkgroup/");
     }
 }

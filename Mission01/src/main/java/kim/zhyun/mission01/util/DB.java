@@ -5,10 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static kim.zhyun.mission01.util.Secret.DATABASE_ROUTE;
-
 public class DB {
-    private static final String DB_NAME = DATABASE_ROUTE;
+    private static final String DB_NAME = "mySqlite.db";
 
     private static Connection conn = null;
     private static Statement stmt = null;
@@ -18,7 +16,8 @@ public class DB {
         getConn();
         getStmt();
 
-        clearTables();
+        createTables();
+//        clearTables();
     }
 
     // table 생성

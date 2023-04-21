@@ -38,4 +38,4 @@ build/
 .DS_Store
 
 ### API-KEY
-src/main/java/kim/zhyun/mission01/util/Secret.java
+# src/main/java/kim/zhyun/mission01/util/Secret.java

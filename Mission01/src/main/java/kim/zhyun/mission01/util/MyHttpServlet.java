@@ -20,6 +20,15 @@ public class MyHttpServlet {
             e.printStackTrace();
         }
     }
+    public static void redirect(HttpServletRequest req, HttpServletResponse resp, String page) {
+        try {
+            String domain = req.getRequestURL().toString().replace(req.getRequestURI(),"") + req.getContextPath() + page;
+
+            resp.sendRedirect(domain);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static void forward(HttpServlet servlet, HttpServletRequest req, HttpServletResponse resp, String page) {
         try {
             ServletContext app = servlet.getServletContext();
