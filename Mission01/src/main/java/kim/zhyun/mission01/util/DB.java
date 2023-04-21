@@ -16,7 +16,7 @@ public class DB {
         getConn();
         getStmt();
 
-//        createTables();
+        createTables();
 //        clearTables();
     }
 
