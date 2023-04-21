@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DB {
-    private static final String DB_NAME = "mySqlite.db";
+    private static final String DB_NAME = new PrivateInfo().getDbInfo();
 
     private static Connection conn = null;
     private static Statement stmt = null;
@@ -16,7 +16,7 @@ public class DB {
         getConn();
         getStmt();
 
-        createTables();
+//        createTables();
 //        clearTables();
     }
 

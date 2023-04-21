@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
 public class MyOkHttp {
-    private static final String API_KEY = Secret.API_KEY;
+    private static final String API_KEY = PrivateInfo.API_KEY;
 
     private static OkHttpClient client;
     private static Request.Builder builder;
