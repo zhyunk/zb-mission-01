@@ -10,6 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.beans.ExceptionListener;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 @WebServlet(name = "wifiServlet", urlPatterns = "/detail/*", loadOnStartup = 1)
 public class WifiServlet extends HttpServlet {
@@ -21,7 +25,7 @@ public class WifiServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
         MyHttpServlet.encoding(req, resp);
 
         String idx;
@@ -29,7 +33,7 @@ public class WifiServlet extends HttpServlet {
 
         String[] uri = req.getRequestURI().split("/");
         int maxIdxUri = uri.length - 1;
-        if (maxIdxUri > 2) {
+        if (isDouble(uri[maxIdxUri])) {
             idx = uri[maxIdxUri - 1];
             distance = Double.parseDouble(uri[maxIdxUri]);
         } else {
@@ -37,12 +41,21 @@ public class WifiServlet extends HttpServlet {
             distance = 0.0;
         }
 
-        WifiInfo wi = service.select(idx);
+        WifiInfo wi = service.select(URLDecoder.decode(idx, "UTF-8"));
         wi.setDistance(distance);
 
         req.setAttribute("wifiInfo", wi);
         req.setAttribute("bmgList", BookmarkGroupService.getInstance().selectAll());
 
         MyHttpServlet.forward(this, req, resp, "detail.jsp");
+    }
+
+    private boolean isDouble(String value) {
+        try {
+            Double.parseDouble(value);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
