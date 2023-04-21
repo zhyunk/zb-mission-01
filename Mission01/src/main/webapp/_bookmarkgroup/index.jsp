@@ -32,9 +32,9 @@
       <td><%= b.getUpdDatetime() == null ? "" : b.getUpdDatetime() %></td>
       <td>
         <a href="<%= ROOT %>bookmarkgroup/update?idx=<%= b.getIdx() %>" href="">수정</a>
-        <a href="#" onclick="return del();">삭제</a>
+        <a href="#" onclick="return del('<%= b.getIdx() %>');">삭제</a>
         <form method="post" id="bmgForm" action="<%= ROOT %>bookmarkgroup/">
-          <input type="hidden" name="idx" id="idx" value="<%= b.getIdx() %>" />
+          <input type="hidden" name="idx" id="idx" value="" />
           <input type="hidden" name="cmd" id="cmd" value="delete" />
         </form>
       </td>
@@ -46,9 +46,10 @@
   </table>
 
   <script>
-    function del() {
-      alert('삭제 되었습니다.')
+    function del(v) {
+      document.getElementById("idx").value = v;
       document.getElementById("bmgForm").submit();
+      alert('삭제 되었습니다.')
     }
   </script>
 </body>

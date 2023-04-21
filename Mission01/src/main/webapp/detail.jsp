@@ -18,7 +18,7 @@
                 <%  } %>
                 <% } %>
             </select>
-            <button onclick="save()">북마크 추가하기</button>
+            <button onclick="return save();">북마크 추가하기</button>
         </form>
 
         <table>

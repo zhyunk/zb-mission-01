@@ -30,7 +30,7 @@
         </form>
         <script>
             function bmgSubmit() {
-                var name = document.getElementById("bmgName").value;
+                var name = document.getElementById("bmgName").value.replace(" ", "");
                 var id = document.getElementById("order").value;
 
                 if (!name) {

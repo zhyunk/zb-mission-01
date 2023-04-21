@@ -20,6 +20,11 @@ public class DB {
 //        clearTables();
     }
 
+    private static void clearTables() {
+        createTables();
+        dropTables();
+        createTables();
+    }
     // table 생성
     private static void createTables() {
         String sql = "CREATE TABLE IF NOT EXISTS TB_WIFI_INFO (                            " +
@@ -88,11 +93,6 @@ public class DB {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-    private static void clearTables() {
-        createTables();
-        dropTables();
-        createTables();
     }
 
     // db 연결
