@@ -3,7 +3,8 @@
 <%@ page import="kim.zhyun.mission01.controller.ApiServlet" %>
 <%@ page import="kim.zhyun.mission01.controller.HistoryServlet" %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.beans.Encoder" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%
     ApiServlet api = new ApiServlet();
@@ -69,7 +70,7 @@
                 <td><%= i.getDistance() %></td>
                 <td><%= i.getX_SWIFI_MGR_NO() %></td>
                 <td><%= i.getX_SWIFI_WRDOFC() %></td>
-                <td><a href="detail/<%= i.getX_SWIFI_MGR_NO() %>/<%= i.getDistance() %>"><%= i.getX_SWIFI_MAIN_NM() %></a></td>
+                <td><a href="#" onclick="return go('<%= i.getX_SWIFI_MGR_NO() %>', '<%= i.getDistance() %>');"><%= i.getX_SWIFI_MAIN_NM() %></a></td>
                 <td><%= i.getX_SWIFI_ADRES1() %></td>
                 <td><%= i.getX_SWIFI_ADRES2() %></td>
                 <td><%= i.getX_SWIFI_INSTL_FLOOR() %></td>
@@ -94,6 +95,9 @@
         <br/>
 
         <script>
+            function go(v, d) {
+                location.href = "<%= ROOT %>detail/" + encodeURI(v) + "/" + d;
+            }
             function success({ coords, timestamp }) {
                 const latitude = coords.latitude;   // 위도
                 const longitude = coords.longitude; // 경도
