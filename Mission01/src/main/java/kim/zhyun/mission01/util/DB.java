@@ -47,16 +47,6 @@ public class DB {
                 "	WORK_DTTM	TEXT,                                                   " +
                 "	PRIMARY KEY(X_SWIFI_MGR_NO)                                         " +
                 ");                                                                     " +
-                "                                                                       " +
-                "CREATE TABLE IF NOT EXISTS TB_BOOK_MARK (                              " +
-                "	IDX	INTEGER NOT NULL,                                               " +
-                "	IDX_BOOK_MARK_GROUP	INTEGER NOT NULL,                               " +
-                "	IDX_WIFI	TEXT NOT NULL,                                          " +
-                "	REG_DATETIME	TEXT NOT NULL,                                      " +
-                "	FOREIGN KEY(IDX_BOOK_MARK_GROUP) REFERENCES TB_BOOK_MARK_GROUP(IDX)," +
-                "	FOREIGN KEY(IDX_WIFI) REFERENCES TB_WIFI_INFO(X_SWIFI_MGR_NO),      " +
-                "	PRIMARY KEY(IDX AUTOINCREMENT)                                      " +
-                ");                                                                   " +
                 "                                                                     " +
                 "CREATE TABLE IF NOT EXISTS TB_BOOK_MARK_GROUP                        " +
                 "(                                                                    " +
@@ -66,6 +56,16 @@ public class DB {
                 "    `REG_DATETIME`   TEXT       NOT NULL    ,                        " +
                 "    `UPD_DATETIME`   TEXT       NULL        ,                        " +
                 "     PRIMARY KEY (IDX AUTOINCREMENT)                                 " +
+                ");                                                                   " +
+                "                                                                       " +
+                "CREATE TABLE IF NOT EXISTS TB_BOOK_MARK (                              " +
+                "	IDX	INTEGER NOT NULL,                                               " +
+                "	IDX_BOOK_MARK_GROUP	INTEGER NOT NULL,                               " +
+                "	IDX_WIFI	TEXT NOT NULL,                                          " +
+                "	REG_DATETIME	TEXT NOT NULL,                                      " +
+                "	FOREIGN KEY(IDX_BOOK_MARK_GROUP) REFERENCES TB_BOOK_MARK_GROUP(IDX)," +
+                "	FOREIGN KEY(IDX_WIFI) REFERENCES TB_WIFI_INFO(X_SWIFI_MGR_NO),      " +
+                "	PRIMARY KEY(IDX AUTOINCREMENT)                                      " +
                 ");                                                                   " +
                 "                                                                     " +
                 "CREATE TABLE IF NOT EXISTS TB_HISTORY                                " +
@@ -87,8 +87,8 @@ public class DB {
     private static void dropTables() {
         try {
             stmt.executeUpdate("DROP TABLE TB_HISTORY;");
-            stmt.executeUpdate("DROP TABLE TB_BOOK_MARK_GROUP;");
             stmt.executeUpdate("DROP TABLE TB_BOOK_MARK;");
+            stmt.executeUpdate("DROP TABLE TB_BOOK_MARK_GROUP;");
             stmt.executeUpdate("DROP TABLE TB_WIFI_INFO;");
         } catch (SQLException e) {
             throw new RuntimeException(e);
