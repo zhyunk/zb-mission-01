@@ -1,5 +1,6 @@
 package kim.zhyun.mission01.controller;
 
+import com.google.gson.*;
 import kim.zhyun.mission01.model.HistoryService;
 import kim.zhyun.mission01.model.dto.History;
 import kim.zhyun.mission01.util.MyDateTime;
@@ -27,19 +28,26 @@ public class HistoryServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        service.delete(req.getParameter("idx"));
+        MyHttpServlet.encoding(req, resp);
 
-        resp.sendRedirect("history");
+        String cmd = req.getParameter("cmd");
+        cmd = cmd == null ? "" : cmd;
+
+        if ("delete".equals(cmd)) {
+            service.delete(req.getParameter("idx"));
+
+            MyHttpServlet.redirect(req, resp, "history");
+
+        } else {
+            String input = req.getParameter("data");
+            Gson gson = new Gson();
+
+            History h = gson.fromJson(input, History.class);
+            h.setRegDateTime(MyDateTime.getNow());
+
+            service.insert(h);
+
+            MyHttpServlet.forward(this, req, resp, "jsonResponse/value.jsp");
+        }
     }
-
-    public void insertHistory(String lat, String lnt) {
-        History h = new History();
-        h.setLat(Double.parseDouble(lat));
-        h.setLnt(Double.parseDouble(lnt));
-        h.setRegDateTime(MyDateTime.getNow());
-
-        service.insert(h);
-    }
-
-    public void destroy() {}
 }

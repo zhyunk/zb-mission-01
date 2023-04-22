@@ -16,8 +16,8 @@ public class DB {
         getConn();
         getStmt();
 
-        createTables();
-//        clearTables();
+//        createTables();
+        clearTables();
     }
 
     private static void clearTables() {

@@ -11,6 +11,9 @@ import java.io.UnsupportedEncodingException;
 
 public class MyHttpServlet {
 
+    public static String getUrl(HttpServletRequest req) {
+        return req.getRequestURL().toString().replace(req.getRequestURI(),"");
+    }
     public static void encoding(HttpServletRequest req, HttpServletResponse resp) {
         try {
             resp.setContentType("text/html");
@@ -22,7 +25,7 @@ public class MyHttpServlet {
     }
     public static void redirect(HttpServletRequest req, HttpServletResponse resp, String page) {
         try {
-            String url = req.getRequestURL().toString().replace(req.getRequestURI(),"") + req.getContextPath() + page;
+            String url = getUrl(req) + req.getContextPath() + "/" + page;
 
             resp.sendRedirect(url);
         } catch (IOException e) {

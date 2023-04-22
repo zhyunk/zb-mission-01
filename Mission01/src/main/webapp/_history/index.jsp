@@ -33,6 +33,7 @@
     %>
         <tr>
             <form method="post" action="history">
+                <input type="hidden" name="cmd" value="delete" />
                 <input type="hidden" name="idx" value="<%= i.getIdx() %>" />
                 <td><%= idx-- %></td>
                 <td><%= i.getLat() %></td>

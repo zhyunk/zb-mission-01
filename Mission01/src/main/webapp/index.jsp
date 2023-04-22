@@ -1,30 +1,11 @@
 <%@ include file="common/navigation.jsp" %>
-<%@ page import="kim.zhyun.mission01.model.dto.WifiInfo" %>
-<%@ page import="kim.zhyun.mission01.controller.ApiServlet" %>
-<%@ page import="kim.zhyun.mission01.controller.HistoryServlet" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.beans.Encoder" %>
+<%@ page import="kim.zhyun.mission01.util.MyHttpServlet" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%
-    ApiServlet api = new ApiServlet();
-    HistoryServlet history = new HistoryServlet();
-
-    String lat = request.getParameter("lat");
-    String lnt = request.getParameter("lnt");
-
-    List<WifiInfo> list = null;
-    if (lat != null && lnt != null) {
-        history.insertHistory(lat, lnt);
-        list = api.getAroundList(lat, lnt);
-    }
-%>
-        <form action="<%= ROOT %>" method="get" id="geoForm">
-            <label for="lat">LAT: </label> <input type="text" id="lat" name="lat" placeholder="0.0" value="<%= lat != null ? lat : "" %>"> ,
-            <label for="lnt">LNT: </label> <input type="text" id="lnt" name="lnt" placeholder="0.0" value="<%= lnt != null ? lnt : "" %>">
-            <button type="button" onclick="getUserLocation()">내 위치 가져오기</button>
-            <button type="button" onclick="return geoSubmit()">근처 WIFI 정보 보기</button>
-        </form>
+        <label for="lat">LAT: </label> <input type="text" id="lat" name="lat" placeholder="0.0" value=""> ,
+        <label for="lnt">LNT: </label> <input type="text" id="lnt" name="lnt" placeholder="0.0" value="">
+        <button type="button" onclick="getUserLocation()">내 위치 가져오기</button>
+        <button type="button" onclick="return geoSubmit()">근처 WIFI 정보 보기</button>
 
         <br/>
         <br/>
@@ -51,43 +32,10 @@
                     <th>작업일자</th>
                 </tr>
             </thead>
-            <tbody>
-            <%
-                if (list == null || list.size() == 0) {
-            %>
-            <tr class="list-no-data">
-                <% if (list == null) { %>
-                <th colspan="17">위치 정보를 입력한 후에 조회해주세요</th>
-                <% } else if (list.size() == 0){ %>
-                <th colspan="17">Open API 와이파이 정보 가져오기를 눌러주세요</th>
-                <% } %>
-            </tr>
-            <%
-                } else {
-                    for (WifiInfo i: list) {
-            %>
-            <tr>
-                <td><%= String.format("%.6f", i.getDistance()) %></td>
-                <td><%= i.getX_SWIFI_MGR_NO() %></td>
-                <td><%= i.getX_SWIFI_WRDOFC() %></td>
-                <td><a href="#" onclick="return go('<%= i.getX_SWIFI_MGR_NO() %>', '<%= i.getDistance() %>');"><%= i.getX_SWIFI_MAIN_NM() %></a></td>
-                <td><%= i.getX_SWIFI_ADRES1() %></td>
-                <td><%= i.getX_SWIFI_ADRES2() %></td>
-                <td><%= i.getX_SWIFI_INSTL_FLOOR() %></td>
-                <td><%= i.getX_SWIFI_INSTL_TY() %></td>
-                <td><%= i.getX_SWIFI_INSTL_MBY() %></td>
-                <td><%= i.getX_SWIFI_SVC_SE() %></td>
-                <td><%= i.getX_SWIFI_CMCWR() %></td>
-                <td><%= i.getX_SWIFI_CNSTC_YEAR() %></td>
-                <td><%= i.getX_SWIFI_INOUT_DOOR() %></td>
-                <td><%= i.getX_SWIFI_REMARS3() %></td>
-                <td><%= i.getLAT() %></td>
-                <td><%= i.getLNT() %></td>
-                <td><%= i.getWORK_DTTM() %></td>
-            </tr>
-            <%      }
-                }
-            %>
+            <tbody id="tbl_wifi_list">
+                <tr class="list-no-data">
+                    <th colspan="17">위치 정보를 입력한 후에 조회해주세요</th>
+                </tr>
             </tbody>
         </table>
 
@@ -134,7 +82,15 @@
                 }
 
                 if (lat && lnt) {
-                    document.getElementById("geoForm").submit();
+                    var data = {
+                        lat: lat,
+                        lnt: lnt
+                    };
+
+                    ajaxRequest("<%= MyHttpServlet.getUrl(request) + ROOT %>history", data, () => {});
+                    ajaxRequest("<%= MyHttpServlet.getUrl(request) + ROOT %>getAround", data, (response) => {
+                        document.getElementById("tbl_wifi_list").innerHTML = response;
+                    });
                     return true;
                 }
             }
@@ -142,6 +98,18 @@
                 floatRegex = /^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/;
 
                 return floatRegex.test(value);
+            }
+
+            function ajaxRequest(url, data, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        callback(xhr.responseText);
+                    }
+                };
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+                xhr.send('data=' + encodeURIComponent(JSON.stringify(data)));
             }
         </script>
     </body>
