@@ -1,4 +1,4 @@
-<%@ include file="common/navigation.jsp" %>
+<%@ include file="../common/navigation.jsp" %>
 <%@ page import="kim.zhyun.mission01.model.dto.History" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" %>

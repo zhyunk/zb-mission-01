@@ -23,7 +23,7 @@ public class HistoryServlet extends HttpServlet {
         request.setAttribute("pageTitle", "위치 히스토리 목록");
         request.setAttribute("list", service.select());
 
-        MyHttpServlet.forward(this, request, response, "/history.jsp");
+        MyHttpServlet.forward(this, request, response, "_history/");
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
