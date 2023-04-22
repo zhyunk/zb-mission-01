@@ -67,7 +67,7 @@
                     for (WifiInfo i: list) {
             %>
             <tr>
-                <td><%= i.getDistance() %></td>
+                <td><%= String.format("%.6f", i.getDistance()) %></td>
                 <td><%= i.getX_SWIFI_MGR_NO() %></td>
                 <td><%= i.getX_SWIFI_WRDOFC() %></td>
                 <td><a href="#" onclick="return go('<%= i.getX_SWIFI_MGR_NO() %>', '<%= i.getDistance() %>');"><%= i.getX_SWIFI_MAIN_NM() %></a></td>

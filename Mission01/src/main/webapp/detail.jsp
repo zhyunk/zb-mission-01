@@ -28,7 +28,7 @@
             </colgroup>
             <tr>
                 <th>거리(Km)</th>
-                <td><%= info.getDistance() %></td>
+                <td><%= String.format("%.6f", info.getDistance()) %></td>
             </tr>
             <tr>
                 <th>관리번호</th>
