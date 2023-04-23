@@ -1,6 +1,6 @@
 <%@ page import="kim.zhyun.mission01.model.dto.BookmarkGroup" %>
 <%@ page import="java.util.List" %>
-<%@include file="../common/navigation.jsp" %>
+<%@include file="../_common/navigation.jsp" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
   <button onclick="location.replace('<%= ROOT %>bookmarkgroup/add')">북마크 그룹 이름 추가</button>

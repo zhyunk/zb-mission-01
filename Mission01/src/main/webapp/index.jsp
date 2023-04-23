@@ -1,4 +1,4 @@
-<%@ include file="common/navigation.jsp" %>
+<%@ include file="_common/navigation.jsp" %>
 <%@ page import="kim.zhyun.mission01.util.MyHttpServlet" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 

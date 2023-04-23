@@ -47,7 +47,7 @@ public class BookmarkGroupServlet extends HttpServlet {
         req.setAttribute("pageTitle", "북마크 그룹" + title);
         req.setAttribute("cmd", cmd);
 
-        MyHttpServlet.forward(this, req, resp, "/_bookmarkgroup/" + uri);
+        MyHttpServlet.forward(this, req, resp, "_bookmarkgroup/" + uri);
     }
 
     @Override
@@ -80,6 +80,6 @@ public class BookmarkGroupServlet extends HttpServlet {
         req.setAttribute("list", service.selectAll());
         req.setAttribute("pageTitle", "북마크 그룹");
 
-        MyHttpServlet.redirect(req, resp, "/bookmarkgroup/");
+        MyHttpServlet.redirect(req, resp, "bookmarkgroup/");
     }
 }

@@ -52,7 +52,7 @@ public class ApiServlet extends HttpServlet {
         // db에 저장 된 전체 개수
         request.setAttribute("listCnt", cnt);
 
-        MyHttpServlet.forward(this, request, response, "/load-wifi.jsp");
+        MyHttpServlet.forward(this, request, response, "load-wifi.jsp");
     }
 
     @Override

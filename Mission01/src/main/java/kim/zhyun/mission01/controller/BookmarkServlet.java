@@ -35,7 +35,7 @@ public class BookmarkServlet extends HttpServlet {
 
         req.setAttribute("pageTitle", "북마크" + title);
 
-        MyHttpServlet.forward(this, req, resp, "/_bookmark/" + uri);
+        MyHttpServlet.forward(this, req, resp, "_bookmark/" + uri);
     }
 
     @Override

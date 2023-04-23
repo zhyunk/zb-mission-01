@@ -1,5 +1,5 @@
 <%@ page import="kim.zhyun.mission01.model.dto.Bookmark" %>
-<%@ include file="../common/navigation.jsp"%>
+<%@ include file="../_common/navigation.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% Bookmark b = (Bookmark) request.getAttribute("data"); %>
         북마크를 삭제하시겠습니까?
