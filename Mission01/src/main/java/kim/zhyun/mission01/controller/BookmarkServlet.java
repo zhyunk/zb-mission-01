@@ -60,6 +60,6 @@ public class BookmarkServlet extends HttpServlet {
         req.setAttribute("list", service.selectAll());
         req.setAttribute("pageTitle", "북마크");
 
-        MyHttpServlet.forward(this, req, resp, "/_bookmark/");
+        MyHttpServlet.forward(this, req, resp, "_bookmark/");
     }
 }
