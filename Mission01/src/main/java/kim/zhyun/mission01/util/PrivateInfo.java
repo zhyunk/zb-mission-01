@@ -7,6 +7,11 @@ public class PrivateInfo {
     // DB 경로 + DB 이름
     private String DB_INFO = "zhSQLite.db";
     public String getDbInfo() {
-        return this.getClass().getClassLoader().getResource(DB_INFO).getPath().replaceFirst("/", "");
+        String os = System.getProperty("os.name").toLowerCase();
+
+        if (os.startsWith("windows"))
+            return this.getClass().getClassLoader().getResource(DB_INFO).getPath().replaceFirst("/", "");
+        else
+            return this.getClass().getClassLoader().getResource(DB_INFO).getPath();
     }
 }
