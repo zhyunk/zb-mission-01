@@ -1,4 +1,4 @@
-<%@ include file="common/header.jsp"%>
+<%@ include file="_common/header.jsp"%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
     <body class="wifi-load">

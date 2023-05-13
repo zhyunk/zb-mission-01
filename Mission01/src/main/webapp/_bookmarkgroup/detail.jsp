@@ -1,5 +1,5 @@
 <%@ page import="kim.zhyun.mission01.model.dto.BookmarkGroup" %>
-<%@ include file="../common/navigation.jsp"%>
+<%@ include file="../_common/navigation.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% String cmd = (String) request.getAttribute("cmd"); %>
 <% BookmarkGroup bmg = (BookmarkGroup) request.getAttribute("bmg"); %>

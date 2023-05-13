@@ -1,9 +1,8 @@
-<%@ include file="common/navigation.jsp" %>
+<%@ include file="_common/navigation.jsp" %>
 <%@ page import="kim.zhyun.mission01.model.dto.WifiInfo" %>
 <%@ page import="kim.zhyun.mission01.controller.ApiServlet" %>
 <%@ page import="kim.zhyun.mission01.controller.HistoryServlet" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.beans.Encoder" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%

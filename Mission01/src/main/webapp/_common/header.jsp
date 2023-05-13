@@ -1,12 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<% final String SITE_TITLE = "와이파이 정보 구하기"; %>
-<% final String TITLE = request.getAttribute("pageTitle") != null ? request.getAttribute("pageTitle").toString() : SITE_TITLE; %>
-<% final String ROOT = request.getContextPath() + "/"; %>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= SITE_TITLE %></title>
+    <title>와이파이 정보 구하기</title>
     <meta charset="utf-8">
     <style>
         table {
@@ -39,3 +35,7 @@
     </style>
 </head>
 
+
+<% final String SITE_TITLE = "와이파이 정보 구하기"; %>
+<% final String TITLE = request.getAttribute("pageTitle") != null ? request.getAttribute("pageTitle").toString() : SITE_TITLE; %>
+<% final String ROOT = request.getContextPath() + "/"; %>

@@ -1,7 +1,7 @@
 <%@ page import="kim.zhyun.mission01.model.dto.WifiInfo" %>
 <%@ page import="kim.zhyun.mission01.model.dto.BookmarkGroup" %>
 <%@ page import="java.util.List" %>
-<%@ include file="common/navigation.jsp"%>
+<%@ include file="_common/navigation.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     WifiInfo info = (WifiInfo) request.getAttribute("wifiInfo");
