@@ -1,6 +1,6 @@
 package kim.zhyun.mission01.controller;
 
-import kim.zhyun.mission01.model.BookmarkGroupService;
+import kim.zhyun.mission01.model.service.BookmarkGroupService;
 import kim.zhyun.mission01.model.dto.BookmarkGroup;
 import kim.zhyun.mission01.util.MyDateTime;
 import kim.zhyun.mission01.util.MyHttpServlet;

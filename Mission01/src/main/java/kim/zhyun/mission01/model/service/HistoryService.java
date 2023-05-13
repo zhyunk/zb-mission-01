@@ -1,5 +1,6 @@
-package kim.zhyun.mission01.model;
+package kim.zhyun.mission01.model.service;
 
+import kim.zhyun.mission01.model.IHistoryService;
 import kim.zhyun.mission01.model.dao.HistoryDao;
 import kim.zhyun.mission01.model.dto.History;
 
@@ -35,8 +36,3 @@ public class HistoryService implements IHistoryService {
     }
 }
 
-interface IHistoryService {
-    void insert(History h);
-    List<History> select();
-    void delete(String idx);
-}

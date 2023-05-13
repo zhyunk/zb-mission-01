@@ -1,7 +1,7 @@
 package kim.zhyun.mission01.controller;
 
-import kim.zhyun.mission01.model.BookmarkGroupService;
-import kim.zhyun.mission01.model.WifiService;
+import kim.zhyun.mission01.model.service.BookmarkGroupService;
+import kim.zhyun.mission01.model.service.WifiService;
 import kim.zhyun.mission01.model.dto.WifiInfo;
 import kim.zhyun.mission01.util.DB;
 import kim.zhyun.mission01.util.MyHttpServlet;
@@ -10,10 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.beans.ExceptionListener;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 
 @WebServlet(name = "wifiServlet", urlPatterns = "/detail/*", loadOnStartup = 1)
 public class WifiServlet extends HttpServlet {

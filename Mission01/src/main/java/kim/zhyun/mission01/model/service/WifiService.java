@@ -1,5 +1,6 @@
-package kim.zhyun.mission01.model;
+package kim.zhyun.mission01.model.service;
 
+import kim.zhyun.mission01.model.IWifiService;
 import kim.zhyun.mission01.model.dao.WifiDao;
 import kim.zhyun.mission01.model.dto.WifiInfo;
 
@@ -42,8 +43,3 @@ public class WifiService implements IWifiService {
     }
 }
 
-interface IWifiService {
-    WifiInfo select(String idx);
-    List<WifiInfo> select(double lat, double lnt);
-    int insert(List<WifiInfo> list);
-}

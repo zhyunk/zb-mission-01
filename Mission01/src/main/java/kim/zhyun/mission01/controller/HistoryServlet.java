@@ -1,6 +1,6 @@
 package kim.zhyun.mission01.controller;
 
-import kim.zhyun.mission01.model.HistoryService;
+import kim.zhyun.mission01.model.service.HistoryService;
 import kim.zhyun.mission01.model.dto.History;
 import kim.zhyun.mission01.util.MyDateTime;
 import kim.zhyun.mission01.util.MyHttpServlet;

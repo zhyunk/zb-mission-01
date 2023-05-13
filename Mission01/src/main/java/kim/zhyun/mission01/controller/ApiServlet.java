@@ -1,6 +1,6 @@
 package kim.zhyun.mission01.controller;
 
-import kim.zhyun.mission01.model.WifiService;
+import kim.zhyun.mission01.model.service.WifiService;
 import kim.zhyun.mission01.model.dto.WifiInfo;
 import kim.zhyun.mission01.model.dto.Result;
 import kim.zhyun.mission01.util.MyHttpServlet;

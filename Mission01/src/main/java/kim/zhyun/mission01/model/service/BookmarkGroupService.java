@@ -1,5 +1,6 @@
-package kim.zhyun.mission01.model;
+package kim.zhyun.mission01.model.service;
 
+import kim.zhyun.mission01.model.IBookmarkGroupService;
 import kim.zhyun.mission01.model.dao.BookmarkGroupDao;
 import kim.zhyun.mission01.model.dto.BookmarkGroup;
 
@@ -46,11 +47,3 @@ public class BookmarkGroupService implements IBookmarkGroupService {
     }
 }
 
-interface IBookmarkGroupService {
-
-    void delete(int idx);
-    void insert(BookmarkGroup b);
-    void update(BookmarkGroup b);
-    BookmarkGroup select(int idx);
-    List<BookmarkGroup> selectAll();
-}
