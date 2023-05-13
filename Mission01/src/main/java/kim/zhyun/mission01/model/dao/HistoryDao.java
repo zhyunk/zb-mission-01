@@ -10,13 +10,12 @@ import java.util.List;
 public class HistoryDao {
     private final String TABLE = "TB_HISTORY";
 
-    private static HistoryDao dao;
     private HistoryDao() {}
+    static class HistoryDaoHolder {
+        private static final HistoryDao INSTANCE = new HistoryDao();
+    }
     public static HistoryDao getInstance() {
-        if (dao == null) {
-            dao = new HistoryDao();
-        }
-        return dao;
+        return HistoryDaoHolder.INSTANCE;
     }
 
     public void insert(History h) {

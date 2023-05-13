@@ -12,12 +12,11 @@ public class HistoryService implements IHistoryService {
         dao = HistoryDao.getInstance();
     }
 
-    private static HistoryService service;
+    static class HistoryServiceHolder {
+        private static final HistoryService INSTANCE = new HistoryService();
+    }
     public static HistoryService getInstance() {
-        if (service == null) {
-            service = new HistoryService();
-        }
-        return service;
+        return HistoryServiceHolder.INSTANCE;
     }
 
     @Override

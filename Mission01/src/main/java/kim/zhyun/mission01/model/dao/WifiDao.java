@@ -10,13 +10,12 @@ import java.util.List;
 public class WifiDao {
     private final String TABLE = "TB_WIFI_INFO";
 
-    private static WifiDao wifiDao;
     private WifiDao() {}
+    static class WifiDaoHolder {
+        private static final WifiDao INSTANCE = new WifiDao();
+    }
     public static WifiDao getInstance() {
-        if (wifiDao == null) {
-            wifiDao = new WifiDao();
-        }
-        return wifiDao;
+        return WifiDaoHolder.INSTANCE;
     }
 
     public int insertAll(List<WifiInfo> list) {

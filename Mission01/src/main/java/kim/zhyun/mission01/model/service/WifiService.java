@@ -12,12 +12,11 @@ public class WifiService implements IWifiService {
         this.dao = WifiDao.getInstance();
     }
 
-    private static WifiService service;
+    static class WifiServiceHolder {
+        private static final WifiService INSTANCE = new WifiService();
+    }
     public static WifiService getInstance() {
-        if (service == null) {
-            service = new WifiService();
-        }
-        return service;
+        return WifiServiceHolder.INSTANCE;
     }
 
     @Override

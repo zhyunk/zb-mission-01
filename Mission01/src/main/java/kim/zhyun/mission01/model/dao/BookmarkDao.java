@@ -12,13 +12,12 @@ import java.util.List;
 public class BookmarkDao {
     private final String TABLE = "TB_BOOK_MARK";
 
-    private static BookmarkDao dao;
     private BookmarkDao() {}
+    static class BookmarkDaoHolder {
+        private static final BookmarkDao INSTANCE = new BookmarkDao();
+    }
     public static BookmarkDao getInstance() {
-        if (dao == null) {
-            dao = new BookmarkDao();
-        }
-        return dao;
+        return BookmarkDaoHolder.INSTANCE;
     }
 
     public void deleteBookmarkGroup(int idxBookmarkGroup) {

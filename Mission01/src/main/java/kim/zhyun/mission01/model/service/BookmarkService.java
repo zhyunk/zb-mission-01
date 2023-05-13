@@ -12,12 +12,11 @@ public class BookmarkService implements IBookmarkService {
         this.dao = BookmarkDao.getInstance();
     }
 
-    private static BookmarkService service;
+    static class BookmarkServiceHolder {
+        private static final BookmarkService INSTANCE = new BookmarkService();
+    }
     public static BookmarkService getInstance() {
-        if (service == null) {
-            service = new BookmarkService();
-        }
-        return service;
+        return BookmarkServiceHolder.INSTANCE;
     }
 
     @Override
