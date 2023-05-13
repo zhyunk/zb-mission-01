@@ -16,8 +16,8 @@ public class DB {
         getConn();
         getStmt();
 
-        createTables();
-//        clearTables();
+//        createTables();
+        clearTables();
     }
 
     private static void clearTables() {
@@ -28,7 +28,6 @@ public class DB {
     // table 생성
     private static void createTables() {
         String sql = "CREATE TABLE IF NOT EXISTS TB_WIFI_INFO (                            " +
-                "	DISTANCE	REAL,                                               " +
                 "	X_SWIFI_MGR_NO	TEXT NOT NULL,                                      " +
                 "	X_SWIFI_WRDOFC	TEXT,                                               " +
                 "	X_SWIFI_MAIN_NM	TEXT,                                               " +
